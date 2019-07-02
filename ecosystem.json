@@ -1,0 +1,15 @@
+{
+  "apps": [
+    {
+      "name": "character-recognition",
+      "script": "./shell.js",
+      "instances": 1,
+      "exec_mode": "fork_mode",
+      "env": {
+        "NODE_ENV": "production",
+        "NODE_PATH": "./src",
+        "PORT": 8099
+      }
+    }
+  ]
+}
