@@ -42,13 +42,22 @@
       <p v-if="showlogs">{{logs + ':' + percent + '%'}}</p>
     </div>
     <p style="font-size: 16px; text-align: left;">{{text}}</p>
-    <p style="width: 100%; text-align: center; position: fixed; bottom: 20px; font-weight: 600;">created by zlx <a href="https://github.com/zlx362211854/character-recognition" target="_black">@character-recognition</a></p>
+    <p
+      style="width: 100%; padding: 20px; text-align: center; position: fixed; bottom: 20px; font-weight: 600;"
+    >
+      created by zlx
+      <a
+        href="https://github.com/zlx362211854/character-recognition"
+        target="_black"
+      >@character-recognition</a>
+    </p>
   </div>
 </template>
 
 <script>
-import Tesseract from "tesseract.js";
-import { Upload, Button, Circle } from "iview";
+import Tesseract from 'tesseract.js';
+
+
 export default {
   name: "app",
   data() {
@@ -86,8 +95,10 @@ export default {
     },
     recognize(img) {
       const { language } = this;
+      Tesseract.workerOptions.langPath = "http://140.143.90.177:8099/lang-data/"
       if (img) {
-        Tesseract.recognize(img, language)
+        Tesseract
+          .recognize(img, language)
           .progress(message => {
             console.log("progress is: ", message);
             const { progress, status } = message;
@@ -98,12 +109,12 @@ export default {
               if (progress == 1) {
                 this.color = "#59bb73";
               }
-              this.percent = (progress * 100).toFixed(2);
+              this.percent = +(progress * 100).toFixed(2);
               this.statusText = "识别中...";
             } else {
               this.showlogs = true;
               this.logs = status;
-              this.percent = (progress * 100).toFixed(2);
+              this.percent = +(progress * 100).toFixed(2);
             }
           })
           .then(result => {

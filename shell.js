@@ -1,6 +1,7 @@
 var express = require('express');
 var app = express();
 var path = require('path');
+var PORT = process.env.PORT;
 var server = app.listen(PORT || 8000, function () {
   var host = server.address().address;
   var port = server.address().port;
