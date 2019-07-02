@@ -42,7 +42,7 @@
       <p v-if="showlogs">{{logs + ':' + percent + '%'}}</p>
     </div>
     <p style="font-size: 16px; text-align: left;">{{text}}</p>
-    <p style="width: 100%; text-align: center; position: fixed; bottom: 20px; font-weight: 600;">created by zlx</p>
+    <p style="width: 100%; text-align: center; position: fixed; bottom: 20px; font-weight: 600;">created by zlx <a href="https://github.com/zlx362211854/character-recognition" target="_black">@character-recognition</a></p>
   </div>
 </template>
 
